@@ -1,0 +1,1 @@
+web: gunicorn prestige.wsgi --log-file - --timeout 120

@@ -1,0 +1,39 @@
+
+{% extends "base/base.html" %} {% load static %} 
+{% load crispy_forms_tags %}{% block content %}
+
+<div class="container" >
+    
+
+     
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-6">
+                    {{ form.nom|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ form.marque|as_crispy_field }}
+                  </div>
+                  <div class="col-6">
+                    {{ form.type_categorie|as_crispy_field }}
+                  </div>
+                  
+                </div>
+                
+                {{ form.caracteristique|as_crispy_field }}
+
+                <button type="submit" class="btn btn-success">Enregistrer</button>
+                <a href="{% url 'liste_materiel' %}" class="btn btn-warning">Retour</a>
+
+              </form>
+</div>
+
+</div>
+
+
+
+
+{% endblock content %}
+
+    

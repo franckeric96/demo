@@ -1,0 +1,74 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="card-body">
+    <a href="{% url 'ajouter_materiel' %}" class="btn btn-primary btn-sm btn-block">Ajouter du matériel informatique </a>
+    <hr>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+
+                    <th>Nom</th>
+                    <th>Reférence</th>
+                    <th>Marque</th>
+                    <th>Catégories</th>
+                    <th>Caractéristique</th>
+                    <th>Date</th>
+                    <th>mise à jour</th>
+                    <th>Supprimer</th>
+                    
+
+                    
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+
+                    <th>Nom</th>
+                    <th>Reférence</th>
+                    <th>Marque</th>
+                    <th>Catégories</th>
+                    <th>Caractéristique</th>
+                    <th>Date</th>
+                    <th>Mise à jour</th>
+                    <th>Supprimer</th>
+                    
+
+                    
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for materiel in materiels %}
+                <tr>
+                    <td>{{materiel.nom}}</td>
+                    <td>{{materiel.reference}}</td>
+                    <td>{{materiel.marque}}</td>
+                    <td>{{materiel.type_categorie}}</td>
+                    <td>{{materiel.caracteristique}}</td>
+                    <td>{{materiel.date|date:"d/m/Y"}}</td>
+
+
+
+                
+
+                    <td><a href="{% url 'modifier_materiel' materiel.id %}"><button class="btn btn-sm btn-info">Modifier</button> </a> </td>
+                    <td><a href="{% url 'supprimer_materiel' materiel.id %}"><button class="btn btn-sm btn-danger">Supprimer</button></a> </td>
+                   
+                  
+                    
+
+                </tr>
+                    
+                {% endfor %}
+                    
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
+    

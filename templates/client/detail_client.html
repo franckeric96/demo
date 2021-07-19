@@ -1,0 +1,93 @@
+{% extends "base/base.html" %} {% load static %} {% block content %}
+
+
+<h1>detail des clients</h1>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Client:</h5>
+            <hr>
+            <a href="{% url 'modifier_client' client.id %}" class="btn btn-outline-info btn-sm btn-block">Modifier le client</a>
+            <a href="{% url 'supprimer_client' client.id %}" class="btn btn-outline-danger btn-sm btn-block">Supprimer le client</a>
+        </div>
+    </div>
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Informations</h5>
+            <hr>
+            <p>nom: {{client.nom}}</p>
+            <p>Téléphone: {{client.telephone}}</p>
+
+
+        </div>
+    </div>
+
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Total des commandes</h5>
+            <hr>
+            <h1 style="text-align: center;padding:10px">{{travaux_total}}</h1>
+
+
+
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <form method="get">
+                <button class="btn btn-primary" type="submit">Recherche</button> 
+            </form>
+        </div>
+    </div>
+
+</div>
+<br>
+
+<div class="row">
+
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Objet</th>
+                    <th>Materiel</th>
+                    <th>Description</th>
+                    <th>Commentaire</th>
+
+
+                    <th>Date de commande</th>
+                    <th>Etat</th>
+                    <th>Mise à jour</th>
+                    <th>Supprimer</th>
+
+
+                </tr>
+
+                {% for travaux in travaux %}
+                <tr>
+                    <th>{{travaux.objet}}</th>
+                    <th>{{travaux.materiel.all|join:" , "}}</th>
+                    <th>{{travaux.description}}</th>
+                    <th>{{travaux.commentaire}}</th>
+
+                    <th>{{travaux.date}}</th>
+                    <th>{{travaux.etat}}</th>
+                    <th><a href="#"> Mettre à jour</a></th>
+                    <th><a href="#"> Supprimer</a></th>
+
+
+                </tr>
+                {% endfor %}
+
+            </table>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

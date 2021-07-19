@@ -1,0 +1,111 @@
+
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+<main>
+    <div class="container-fluid">
+        <h1 class="mt-4">Tableau de bord</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item active">Tableau de bord</li>
+        </ol>
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">Primary Card</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-warning text-white mb-4">
+                    <div class="card-body">Warning Card</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-success text-white mb-4">
+                    <div class="card-body">Success Card</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-danger text-white mb-4">
+                    <div class="card-body">Danger Card</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="#">View Details</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table mr-1"></i> Listes des commandes
+            </div>
+            
+            <div class="card-body">
+                <a href="{% url 'ajouter_travaux' %}" class="btn btn-primary btn-sm btn-block" style="margin-bottom: 20PX;">Ajouter </a>
+                
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Objet</th>
+                                <th>Client</th>
+                                <th>Matériels</th>
+                                <th>État</th>
+                                <th>Date</th>
+                                <th>Mise à jour</th>
+                                <th>Supprimer</th>
+                                
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Objet</th>
+                                <th>Client</th>
+                                <th>Matériels</th>
+                                <th>État</th>
+                                <th>Date</th>
+                                <th>Mise à jour</th>
+                                <th>Supprimer</th>
+                                
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            {% for travail in travaux %}
+                            <tr>
+                                <td>{{travail.objet}}</td>
+                                <td>{{travail.client}}</td>
+                                <td>{{travail.materiel.all|join:" , "}}</td>
+                                <td>{{travail.etat}}</td>
+                                <td>{{travail.date|date:"d/m/Y"}}</td>
+                                <td><a href="{% url 'modifier_travaux' travail.id %}"><button class="btn btn-sm btn-info">Modifier</button> </a> </td>
+                                <td><a href="{% url 'supprimer_travaux' travail.id %}"><button class="btn btn-sm btn-danger">Supprimer</button></a> </td>
+                            </tr>
+                                
+                            {% endfor %}
+                                
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+ 

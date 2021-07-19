@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="card-body">
+    <a href="{% url 'ajouter_categorie' %}" class="btn btn-primary btn-sm btn-block">Ajouter une nouvelle catégotrie </a>
+    <hr>
+
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Date</th>
+                    <th>mise à jour</th>
+                    <th>Supprimer</th>
+                    
+
+                    
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Nom</th>
+                    <th>Date</th>
+                    <th>Mise à jour</th>
+                    <th>Supprimer</th>
+                    
+
+                    
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for categorie in categories %}
+                <tr>
+                    <td>{{categorie.nom}}</td>
+                    <td>{{categorie.date|date:"d/m/Y"}}</td>
+                
+
+                    <td><a href="{% url 'modifier_categorie' categorie.id %}"><button class="btn btn-sm btn-info">Modifier</button> </a> </td>
+                    <td><a href="{% url 'supprimer_categorie' categorie.id %}"><button class="btn btn-sm btn-danger">Supprimer</button></a> </td>
+                   
+                  
+                    
+
+                </tr>
+                    
+                {% endfor %}
+                    
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock content %}
+    

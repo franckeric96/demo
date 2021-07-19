@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %} {% load static %} {% block content %}
+<div class="row">
+
+    <div class="col-md">
+        <div class="card card-body">
+            <p>Voulez-vous supprimer ce client?</p>
+            <form action="{% url 'supprimer_client' item.id %}" method="post">
+                {% csrf_token %}
+                <a href="{% url 'liste_client' %}" class="btn btn-warning">NON</a>
+                <input type="submit" class="btn btn-danger" value="Confirmer">
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
