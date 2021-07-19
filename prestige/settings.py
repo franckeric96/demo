@@ -26,7 +26,7 @@ SECRET_KEY = 'm*7fg%+6fem=x9a5ba(nhai)98by!yj5_onf47z5)4jn9cpj6@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['becca-app.herokuapp.com']
 
 
 
@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    
+
     # ... include the providers you want to enable:
     'allauth.socialaccount.providers.agave',
     'allauth.socialaccount.providers.amazon',
@@ -155,7 +155,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.vimeo_oauth2',
     'allauth.socialaccount.providers.vk',
     'allauth.socialaccount.providers.weibo',
- 
+
 ]
 
 SITE_ID = 1
@@ -210,7 +210,7 @@ AUTHENTICATION_BACKENDS = [
 
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
-    
+
 ]
 
 
@@ -286,4 +286,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'franckassovie12345@gmail.com'
 EMAIL_HOST_PASSWORD = 'franckeric2019'
-
